@@ -17,17 +17,17 @@ function base_url($path = '') {
     $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
     $host = $_SERVER['HTTP_HOST'];
     
-    // Untuk PHP built-in server, base path selalu root
-    // Untuk Apache di subdirectory, sesuaikan manual atau deteksi otomatis
-    $base = ''; // Kosongkan karena running di root localhost:8000
+    // Auto-detect base path (works for both PHP built-in server and XAMPP subfolder)
+    $script_name = dirname($_SERVER['SCRIPT_NAME']);
+    $base = ($script_name === '/' || $script_name === '\\') ? '' : $script_name;
     
     $path = ltrim($path, '/');
     
     if (!empty($path)) {
-        return $protocol . '://' . $host . '/' . $path;
+        return $protocol . '://' . $host . $base . '/' . $path;
     }
     
-    return $protocol . '://' . $host . '/';
+    return $protocol . '://' . $host . $base . '/';
 }
 
 // Redirect helper

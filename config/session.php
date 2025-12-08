@@ -29,7 +29,8 @@ function is_logged_in() {
 // Cek role user
 function check_role($allowed_roles) {
     if (!is_logged_in()) {
-        header('Location: /pages/auth/login.php');
+        // Gunakan base_url() agar support subfolder XAMPP
+        header('Location: ' . base_url('pages/auth/login.php'));
         exit;
     }
     
