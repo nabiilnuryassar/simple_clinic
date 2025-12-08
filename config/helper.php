@@ -12,22 +12,30 @@ function clean_input($data) {
     return $data;
 }
 
+// ============================================
+// BASE URL CONFIGURATION
+// ============================================
+// Edit konstanta ini sesuai environment:
+// - PHP built-in server (localhost:8000): ''
+// - XAMPP subfolder (localhost/simple-clinic): '/simple-clinic'
+// - Apache root: ''
+
+if (!defined('BASE_PATH')) {
+    define('BASE_PATH', '/simple-clinic'); // <-- EDIT INI sesuai folder XAMPP
+}
+
 // Base URL helper
 function base_url($path = '') {
     $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
     $host = $_SERVER['HTTP_HOST'];
     
-    // Auto-detect base path (works for both PHP built-in server and XAMPP subfolder)
-    $script_name = dirname($_SERVER['SCRIPT_NAME']);
-    $base = ($script_name === '/' || $script_name === '\\') ? '' : $script_name;
-    
     $path = ltrim($path, '/');
     
     if (!empty($path)) {
-        return $protocol . '://' . $host . $base . '/' . $path;
+        return $protocol . '://' . $host . BASE_PATH . '/' . $path;
     }
     
-    return $protocol . '://' . $host . $base . '/';
+    return $protocol . '://' . $host . BASE_PATH . '/';
 }
 
 // Redirect helper
