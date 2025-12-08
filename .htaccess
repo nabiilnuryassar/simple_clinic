@@ -1,0 +1,92 @@
+# =====================================================
+# .htaccess - Konfigurasi Apache untuk Klinik X
+# Security & URL Rewriting
+# =====================================================
+
+# Aktifkan RewriteEngine
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+</IfModule>
+
+# =====================================================
+# SECURITY HEADERS
+# =====================================================
+
+# Cegah directory listing
+Options -Indexes
+
+# Proteksi file konfigurasi
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Blokir akses ke file sensitif
+<FilesMatch "(^#.*#|\.(bak|conf|dist|fla|in[ci]|log|psd|sh|sql|sw[op])|~)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Security Headers
+<IfModule mod_headers.c>
+    # Cegah XSS
+    Header set X-XSS-Protection "1; mode=block"
+    
+    # Cegah MIME sniffing
+    Header set X-Content-Type-Options "nosniff"
+    
+    # Cegah clickjacking
+    Header set X-Frame-Options "SAMEORIGIN"
+    
+    # Content Security Policy (sesuaikan dengan kebutuhan)
+    Header set Content-Security-Policy "default-src 'self'; style-src 'self' 'unsafe-inline';"
+    
+    # Hapus signature server
+    Header unset X-Powered-By
+    Header unset Server
+</IfModule>
+
+# =====================================================
+# PHP CONFIGURATION
+# =====================================================
+
+<IfModule mod_php7.c>
+    # Matikan display errors di production
+    php_flag display_errors Off
+    php_flag display_startup_errors Off
+    
+    # Log errors
+    php_flag log_errors On
+    
+    # Session security
+    php_flag session.cookie_httponly On
+    php_value session.cookie_samesite Strict
+    
+    # Upload limits
+    php_value upload_max_filesize 10M
+    php_value post_max_size 10M
+    
+    # Hide PHP version
+    php_flag expose_php Off
+</IfModule>
+
+# =====================================================
+# COMPRESSION (opsional, untuk performa)
+# =====================================================
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript
+</IfModule>
+
+# =====================================================
+# BROWSER CACHING (opsional, untuk performa)
+# =====================================================
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+</IfModule>

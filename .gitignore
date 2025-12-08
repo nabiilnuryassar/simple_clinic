@@ -1,0 +1,44 @@
+# Editor & IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# PHP
+vendor/
+composer.lock
+
+# Database
+*.sql.backup
+backup/*.sql
+
+# Logs
+*.log
+logs/
+error.log
+
+# Environment & Config (Security)
+.env
+config/database.php.local
+config/database.local.php
+
+# Upload & Temporary Files
+uploads/*
+!uploads/.gitkeep
+tmp/
+temp/
+*.tmp
+
+# OS Files
+Thumbs.db
+desktop.ini
+
+# Session Files
+sessions/
+*.sess
+
+# Cache
+cache/
+*.cache
