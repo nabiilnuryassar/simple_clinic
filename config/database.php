@@ -8,8 +8,8 @@
 define('DB_HOST', 'localhost');
 define('DB_PORT', '3306');
 define('DB_NAME', 'simple_clinic');
-define('DB_USER', 'nabiil');
-define('DB_PASS', 'password');
+define('DB_USER', 'root');
+define('DB_PASS', '');
 define('DB_CHARSET', 'utf8mb4');
 
 // Fungsi untuk mendapatkan koneksi database
