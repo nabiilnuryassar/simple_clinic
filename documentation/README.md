@@ -1,4 +1,4 @@
-# 📚 Documentation Overview - Sistem Informasi Klinik X
+# 📚 Documentation Overview - Sistem Informasi Klinik Mutiara
 
 ## ✅ Dokumentasi Lengkap Telah Direorganisasi!
 

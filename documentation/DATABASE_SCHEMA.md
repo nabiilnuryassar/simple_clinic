@@ -1,4 +1,4 @@
-# 🗄️ Database Structure Documentation - Sistem Informasi Klinik X
+# 🗄️ Database Structure Documentation - Sistem Informasi Klinik Mutiara
 
 Dokumentasi lengkap struktur database, relasi antar tabel, dan penjelasan fungsi setiap kolom.
 

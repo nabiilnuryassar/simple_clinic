@@ -1,4 +1,4 @@
-# 🏥 Sistem Informasi Klinik X (Simple PHP Native)
+# 🏥 Sistem Informasi Klinik Mutiara (Simple PHP Native)
 
 [![PHP Version](https://img.shields.io/badge/PHP-8.3%2B-blue)](https://www.php.net/)
 [![MySQL](https://img.shields.io/badge/MySQL-5.7%2B-orange)](https://www.mysql.com/)

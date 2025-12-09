@@ -7,7 +7,7 @@
 
 echo "========================================\n";
 echo " PASSWORD HASH GENERATOR\n";
-echo " Klinik X - Sistem Informasi Klinik\n";
+echo " Klinik Mutiara - Sistem Informasi Klinik\n";
 echo "========================================\n\n";
 
 // Password yang ingin di-hash

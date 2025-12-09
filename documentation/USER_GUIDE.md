@@ -1,4 +1,4 @@
-# 📘 User Guide - Sistem Informasi Klinik X
+# 📘 User Guide - Sistem Informasi Klinik Mutiara
 
 Panduan lengkap penggunaan aplikasi untuk Admin dan Dokter.
 

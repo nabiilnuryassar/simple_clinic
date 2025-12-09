@@ -58,7 +58,7 @@ require_once __DIR__ . '/../../layout/sidebar.php';
             <h1 class="card-title">Dashboard Dokter</h1>
         </div>
         <p>Selamat datang, <strong>Dr. <?php echo clean_input($_SESSION['nama']); ?></strong>!</p>
-        <p>Panel Dokter - Sistem Informasi Klinik X</p>
+        <p>Panel Dokter - Sistem Informasi Klinik Mutiara</p>
     </div>
     
     <!-- Statistik Cards -->

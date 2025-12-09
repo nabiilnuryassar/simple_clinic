@@ -48,7 +48,7 @@ try {
     $stmt = $db->prepare("DELETE FROM patients WHERE id = ?");
     $stmt->execute([$id]);
     
-    set_flash('success', "Data pasien <strong>{$pasien['nama']}</strong> berhasil dihapus!");
+    set_flash('success', 'Data pasien <strong>' . htmlspecialchars($pasien['nama'], ENT_QUOTES, 'UTF-8') . '</strong> berhasil dihapus!');
     
 } catch (PDOException $e) {
     error_log("Delete Patient Error: " . $e->getMessage());

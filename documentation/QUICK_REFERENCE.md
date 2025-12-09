@@ -1,4 +1,4 @@
-# 🎯 Quick Reference Card - Sistem Informasi Klinik X
+# 🎯 Quick Reference Card - Sistem Informasi Klinik Mutiara
 
 Cheat sheet untuk command dan konfigurasi yang sering digunakan.
 

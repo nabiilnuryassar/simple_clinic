@@ -1,4 +1,4 @@
-# 🧪 Staging Deployment Guide - Sistem Informasi Klinik X
+# 🧪 Staging Deployment Guide - Sistem Informasi Klinik Mutiara
 
 Panduan deployment ke staging environment untuk testing sebelum production.
 

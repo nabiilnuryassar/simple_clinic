@@ -1,8 +1,8 @@
-# 🧪 Testing Guide - Sistem Informasi Klinik X
+# 🧪 Testing Guide - Sistem Informasi Klinik Mutiara
 
 ## ✅ Status Implementasi: SELESAI
 
-**Project**: Sistem Informasi Klinik X (PHP Native)  
+**Project**: Sistem Informasi Klinik Mutiara (PHP Native)  
 **Database**: simple_clinic  
 **Server**: PHP 8.3.28 Development Server  
 **URL**: http://localhost:8000

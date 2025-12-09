@@ -1,4 +1,4 @@
-# 💻 Codebase Structure Documentation - Sistem Informasi Klinik X
+# 💻 Codebase Structure Documentation - Sistem Informasi Klinik Mutiara
 
 Dokumentasi lengkap untuk memahami struktur code, fungsi setiap file, dan cara kerja aplikasi.
 
@@ -311,13 +311,13 @@ function is_valid_email($email)
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo $page_title ?? 'Klinik X'; ?></title>
+    <title><?php echo $page_title ?? 'Klinik Mutiara'; ?></title>
     <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css'); ?>">
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar">
-        <div class="navbar-brand">🏥 Klinik X</div>
+        <div class="navbar-brand">🏥 Klinik Mutiara</div>
         <div class="navbar-menu">
             <span><?php echo $_SESSION['nama']; ?></span>
             <a href="<?php echo base_url('process/auth_logout.php'); ?>">Logout</a>
@@ -374,7 +374,7 @@ require_once __DIR__ . '/../../layout/sidebar.php';
 **Structure:**
 ```php
     <footer class="footer">
-        <p>&copy; 2025 Klinik X. All rights reserved.</p>
+        <p>&copy; 2025 Klinik Mutiara. All rights reserved.</p>
     </footer>
 </body>
 </html>

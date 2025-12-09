@@ -1,6 +1,6 @@
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║                                                                              ║
-║          📚 DOCUMENTATION SUMMARY - Sistem Informasi Klinik X               ║
+║          📚 DOCUMENTATION SUMMARY - Sistem Informasi Klinik Mutiara               ║
 ║                                                                              ║
 ║                          Version 2.0.0 - December 8, 2025                   ║
 ║                                                                              ║

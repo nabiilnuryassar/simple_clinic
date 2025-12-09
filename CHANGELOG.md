@@ -1,4 +1,4 @@
-# 📝 Changelog - Sistem Informasi Klinik X
+# 📝 Changelog - Sistem Informasi Klinik Mutiara
 
 All notable changes to this project will be documented in this file.
 

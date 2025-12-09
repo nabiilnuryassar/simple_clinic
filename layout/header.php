@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../config/session.php';
 require_once __DIR__ . '/../config/helper.php';
 
-$page_title = isset($page_title) ? $page_title : 'Klinik X';
+$page_title = isset($page_title) ? $page_title : 'Klinik Mutiara';
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -18,7 +18,7 @@ $page_title = isset($page_title) ? $page_title : 'Klinik X';
     <?php if (is_logged_in()): ?>
     <header class="header">
         <nav class="navbar">
-            <a href="<?php echo base_url('index.php'); ?>" class="navbar-brand">🏥 Klinik X</a>
+            <a href="<?php echo base_url('index.php'); ?>" class="navbar-brand">🏥 Klinik Mutiara</a>
             <ul class="navbar-menu">
                 <li>
                     <strong><?php echo clean_input($_SESSION['nama']); ?></strong>
@@ -38,6 +38,6 @@ $page_title = isset($page_title) ? $page_title : 'Klinik X';
     if ($flash):
     ?>
     <div class="alert alert-<?php echo $flash['type']; ?>">
-        <?php echo clean_input($flash['message']); ?>
+        <?php echo $flash['message']; ?>
     </div>
     <?php endif; ?>

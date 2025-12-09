@@ -1,4 +1,4 @@
-# 🛠️ Development Setup - Sistem Informasi Klinik X
+# 🛠️ Development Setup - Sistem Informasi Klinik Mutiara
 
 Panduan lengkap untuk setup environment development lokal.
 

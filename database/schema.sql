@@ -1,6 +1,6 @@
 -- =====================================================
 -- DATABASE: simple_clinic
--- Sistem Informasi Klinik X - SQL Schema
+-- Sistem Informasi Klinik Mutiara - SQL Schema
 -- =====================================================
 
 -- Buat database (opsional, jika belum ada)

@@ -17,7 +17,7 @@ require_once __DIR__ . '/../../layout/header.php';
 
 <div class="login-container">
     <div class="login-card">
-        <h1 class="login-title">🏥 Login Klinik X</h1>
+        <h1 class="login-title">🏥 Login Klinik Mutiara</h1>
         
         <form method="POST" action="<?php echo base_url('process/auth_login.php'); ?>">
             <!-- CSRF Token -->

@@ -53,7 +53,7 @@ try {
     $stmt = $db->prepare("DELETE FROM visits WHERE id = ?");
     $stmt->execute([$id]);
     
-    set_flash('success', "Antrian <strong>#{$visit['no_antrian']}</strong> pasien {$visit['pasien_nama']} berhasil dihapus!");
+    set_flash('success', 'Antrian <strong>#' . htmlspecialchars($visit['no_antrian'], ENT_QUOTES, 'UTF-8') . '</strong> pasien ' . htmlspecialchars($visit['pasien_nama'], ENT_QUOTES, 'UTF-8') . ' berhasil dihapus!');
     
 } catch (PDOException $e) {
     error_log("Delete Visit Error: " . $e->getMessage());

@@ -61,7 +61,7 @@ try {
     ]);
     
     if ($stmt->rowCount() > 0) {
-        set_flash('success', "Data pasien <strong>$nama</strong> berhasil diupdate!");
+        set_flash('success', 'Data pasien <strong>' . htmlspecialchars($nama, ENT_QUOTES, 'UTF-8') . '</strong> berhasil diupdate!');
     } else {
         set_flash('warning', 'Tidak ada perubahan data atau pasien tidak ditemukan.');
     }

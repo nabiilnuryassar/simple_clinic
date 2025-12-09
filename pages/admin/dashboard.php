@@ -42,7 +42,7 @@ require_once __DIR__ . '/../../layout/sidebar.php';
             <h1 class="card-title">Dashboard Administrator</h1>
         </div>
         <p>Selamat datang, <strong><?php echo clean_input($_SESSION['nama']); ?></strong>!</p>
-        <p>Sistem Informasi Klinik X - Panel Administrasi</p>
+        <p>Sistem Informasi Klinik Mutiara - Panel Administrasi</p>
     </div>
     
     <!-- Statistik Cards -->

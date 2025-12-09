@@ -1,4 +1,4 @@
-# 🚀 Production Deployment Guide - Sistem Informasi Klinik X
+# 🚀 Production Deployment Guide - Sistem Informasi Klinik Mutiara
 
 Panduan lengkap deployment ke production environment dengan security best practices.
 
