@@ -54,7 +54,11 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                         <td>
                             <div class="action-links">
                                 <a href="#edit-<?php echo $pasien['id']; ?>" class="action-edit">Edit</a>
-                                <a href="#delete-<?php echo $pasien['id']; ?>" class="action-delete">Hapus</a>
+                                <form method="POST" action="<?php echo base_url('process/admin_delete_pasien.php'); ?>" style="display:inline;" onsubmit="return confirm('Yakin hapus pasien <?php echo htmlspecialchars($pasien['nama']); ?>?');">
+                                    <input type="hidden" name="csrf_token" value="<?php echo generate_csrf_token(); ?>">
+                                    <input type="hidden" name="id" value="<?php echo $pasien['id']; ?>">
+                                    <button type="submit" class="action-delete" style="border:none;background:none;cursor:pointer;color:#ef4444;padding:0;text-decoration:underline;">Hapus</button>
+                                </form>
                             </div>
                         </td>
                     </tr>
@@ -105,6 +109,59 @@ require_once __DIR__ . '/../../layout/sidebar.php';
             <button type="submit" class="btn btn-primary">Simpan Data Pasien</button>
         </form>
     </div>
+    
+    <!-- Form Edit Pasien (untuk setiap pasien) -->
+    <?php foreach ($patients as $pasien): ?>
+    <div class="card" id="edit-<?php echo $pasien['id']; ?>">
+        <div class="card-header">
+            <h2 class="card-title">Edit Pasien: <?php echo clean_input($pasien['nama']); ?></h2>
+        </div>
+        
+        <form method="POST" action="<?php echo base_url('process/admin_edit_pasien.php'); ?>">
+            <input type="hidden" name="csrf_token" value="<?php echo generate_csrf_token(); ?>">
+            <input type="hidden" name="id" value="<?php echo $pasien['id']; ?>">
+            
+            <div class="form-group">
+                <label class="form-label">No. Rekam Medis</label>
+                <input type="text" class="form-input" value="<?php echo clean_input($pasien['no_rm']); ?>" disabled>
+                <small style="color: #64748b;">Nomor RM tidak dapat diubah</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="edit_nama_<?php echo $pasien['id']; ?>" class="form-label">Nama Lengkap *</label>
+                <input type="text" id="edit_nama_<?php echo $pasien['id']; ?>" name="nama" class="form-input" value="<?php echo clean_input($pasien['nama']); ?>" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="edit_tanggal_lahir_<?php echo $pasien['id']; ?>" class="form-label">Tanggal Lahir *</label>
+                <input type="date" id="edit_tanggal_lahir_<?php echo $pasien['id']; ?>" name="tanggal_lahir" class="form-input" value="<?php echo $pasien['tanggal_lahir']; ?>" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="edit_jenis_kelamin_<?php echo $pasien['id']; ?>" class="form-label">Jenis Kelamin *</label>
+                <select id="edit_jenis_kelamin_<?php echo $pasien['id']; ?>" name="jenis_kelamin" class="form-select" required>
+                    <option value="L" <?php echo $pasien['jenis_kelamin'] === 'L' ? 'selected' : ''; ?>>Laki-laki</option>
+                    <option value="P" <?php echo $pasien['jenis_kelamin'] === 'P' ? 'selected' : ''; ?>>Perempuan</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="edit_no_telepon_<?php echo $pasien['id']; ?>" class="form-label">No. Telepon</label>
+                <input type="text" id="edit_no_telepon_<?php echo $pasien['id']; ?>" name="no_telepon" class="form-input" value="<?php echo clean_input($pasien['no_telepon']); ?>" placeholder="08xxxx">
+            </div>
+            
+            <div class="form-group">
+                <label for="edit_alamat_<?php echo $pasien['id']; ?>" class="form-label">Alamat *</label>
+                <textarea id="edit_alamat_<?php echo $pasien['id']; ?>" name="alamat" class="form-textarea" required><?php echo clean_input($pasien['alamat']); ?></textarea>
+            </div>
+            
+            <div style="display: flex; gap: 1rem;">
+                <button type="submit" class="btn btn-primary">Update Data</button>
+                <a href="<?php echo base_url('pages/admin/pasien.php'); ?>" class="btn" style="background: #64748b;">Batal</a>
+            </div>
+        </form>
+    </div>
+    <?php endforeach; ?>
 </main>
 
 <?php require_once __DIR__ . '/../../layout/footer.php'; ?>

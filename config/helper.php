@@ -15,13 +15,19 @@ function clean_input($data) {
 // ============================================
 // BASE URL CONFIGURATION
 // ============================================
-// Edit konstanta ini sesuai environment:
-// - PHP built-in server (localhost:8000): ''
-// - XAMPP subfolder (localhost/simple-clinic): '/simple-clinic'
-// - Apache root: ''
+// Auto-detect environment:
+// - PHP built-in server: BASE_PATH = ''
+// - XAMPP/Apache subfolder: BASE_PATH = '/simple-clinic'
 
 if (!defined('BASE_PATH')) {
-    define('BASE_PATH', '/simple-clinic'); // <-- EDIT INI sesuai folder XAMPP
+    // Auto-detect: jika pakai built-in server, kosongkan base path
+    if (php_sapi_name() === 'cli-server') {
+        define('BASE_PATH', ''); // PHP built-in server
+    } else {
+        // Apache/Nginx - sesuaikan dengan folder di htdocs
+        // Ubah '/simple-clinic' jadi '' jika di root, atau '/nama-folder' jika di subfolder
+        define('BASE_PATH', '/simple-clinic');
+    }
 }
 
 // Base URL helper

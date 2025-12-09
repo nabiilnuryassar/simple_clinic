@@ -54,6 +54,7 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                         <th>Dokter</th>
                         <th>Keluhan</th>
                         <th>Status</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -73,6 +74,17 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                             <span class="badge <?php echo $status_class; ?>">
                                 <?php echo ucfirst($visit['status']); ?>
                             </span>
+                        </td>
+                        <td>
+                            <?php if ($visit['status'] === 'menunggu'): ?>
+                            <form method="POST" action="<?php echo base_url('process/admin_delete_visit.php'); ?>" style="display:inline;" onsubmit="return confirm('Yakin hapus antrian #<?php echo $visit['no_antrian']; ?>?');">
+                                <input type="hidden" name="csrf_token" value="<?php echo generate_csrf_token(); ?>">
+                                <input type="hidden" name="id" value="<?php echo $visit['id']; ?>">
+                                <button type="submit" class="action-delete" style="border:none;background:none;cursor:pointer;color:#ef4444;padding:0.5rem;text-decoration:underline;">Hapus</button>
+                            </form>
+                            <?php else: ?>
+                            <span style="color: #94a3b8;">-</span>
+                            <?php endif; ?>
                         </td>
                     </tr>
                     <?php endforeach; ?>

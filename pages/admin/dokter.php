@@ -56,6 +56,11 @@ require_once __DIR__ . '/../../layout/sidebar.php';
                         <td>
                             <div class="action-links">
                                 <a href="#edit-<?php echo $dokter['id']; ?>" class="action-edit">Edit</a>
+                                <form method="POST" action="<?php echo base_url('process/admin_delete_dokter.php'); ?>" style="display:inline;" onsubmit="return confirm('Yakin hapus dokter <?php echo htmlspecialchars($dokter['nama']); ?>?');">
+                                    <input type="hidden" name="csrf_token" value="<?php echo generate_csrf_token(); ?>">
+                                    <input type="hidden" name="id" value="<?php echo $dokter['id']; ?>">
+                                    <button type="submit" class="action-delete" style="border:none;background:none;cursor:pointer;color:#ef4444;padding:0;text-decoration:underline;">Hapus</button>
+                                </form>
                             </div>
                         </td>
                     </tr>
@@ -107,6 +112,53 @@ require_once __DIR__ . '/../../layout/sidebar.php';
             <button type="submit" class="btn btn-primary">Simpan Data Dokter</button>
         </form>
     </div>
+    
+    <!-- Form Edit Dokter (untuk setiap dokter) -->
+    <?php foreach ($doctors as $dokter): ?>
+    <div class="card" id="edit-<?php echo $dokter['id']; ?>">
+        <div class="card-header">
+            <h2 class="card-title">Edit Dokter: Dr. <?php echo clean_input($dokter['nama']); ?></h2>
+        </div>
+        
+        <form method="POST" action="<?php echo base_url('process/admin_edit_dokter.php'); ?>">
+            <input type="hidden" name="csrf_token" value="<?php echo generate_csrf_token(); ?>">
+            <input type="hidden" name="id" value="<?php echo $dokter['id']; ?>">
+            
+            <div class="form-group">
+                <label for="edit_nama_<?php echo $dokter['id']; ?>" class="form-label">Nama Lengkap *</label>
+                <input type="text" id="edit_nama_<?php echo $dokter['id']; ?>" name="nama" class="form-input" value="<?php echo clean_input($dokter['nama']); ?>" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="edit_spesialisasi_<?php echo $dokter['id']; ?>" class="form-label">Spesialisasi *</label>
+                <input type="text" id="edit_spesialisasi_<?php echo $dokter['id']; ?>" name="spesialisasi" class="form-input" value="<?php echo clean_input($dokter['spesialisasi']); ?>" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="edit_no_telepon_<?php echo $dokter['id']; ?>" class="form-label">No. Telepon *</label>
+                <input type="text" id="edit_no_telepon_<?php echo $dokter['id']; ?>" name="no_telepon" class="form-input" value="<?php echo clean_input($dokter['no_telepon']); ?>" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="edit_email_<?php echo $dokter['id']; ?>" class="form-label">Email</label>
+                <input type="email" id="edit_email_<?php echo $dokter['id']; ?>" name="email" class="form-input" value="<?php echo clean_input($dokter['email']); ?>">
+            </div>
+            
+            <div class="form-group">
+                <label for="edit_status_<?php echo $dokter['id']; ?>" class="form-label">Status *</label>
+                <select id="edit_status_<?php echo $dokter['id']; ?>" name="status" class="form-select" required>
+                    <option value="aktif" <?php echo $dokter['status'] === 'aktif' ? 'selected' : ''; ?>>Aktif</option>
+                    <option value="nonaktif" <?php echo $dokter['status'] === 'nonaktif' ? 'selected' : ''; ?>>Nonaktif</option>
+                </select>
+            </div>
+            
+            <div style="display: flex; gap: 1rem;">
+                <button type="submit" class="btn btn-primary">Update Data</button>
+                <a href="<?php echo base_url('pages/admin/dokter.php'); ?>" class="btn" style="background: #64748b;">Batal</a>
+            </div>
+        </form>
+    </div>
+    <?php endforeach; ?>
 </main>
 
 <?php require_once __DIR__ . '/../../layout/footer.php'; ?>
