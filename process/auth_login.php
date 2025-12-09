@@ -44,6 +44,29 @@ try {
         $_SESSION['role'] = $user['role'];
         $_SESSION['login_time'] = time();
         
+        // Jika user adalah dokter, coba temukan doctor_id dan simpan di session
+        if ($user['role'] === 'dokter') {
+            try {
+                // Prioritas: cari berdasarkan relasi user_id (jika schema sudah diupdate)
+                $stmtDoc = $db->prepare("SELECT id FROM doctors WHERE user_id = ? LIMIT 1");
+                $stmtDoc->execute([$user['id']]);
+                $doc = $stmtDoc->fetch();
+
+                if (!$doc) {
+                    // Fallback: cari berdasarkan nama (backward compatibility)
+                    $stmtDoc = $db->prepare("SELECT id FROM doctors WHERE nama = ? LIMIT 1");
+                    $stmtDoc->execute([$user['nama']]);
+                    $doc = $stmtDoc->fetch();
+                }
+
+                $_SESSION['doctor_id'] = $doc['id'] ?? null;
+            } catch (PDOException $e) {
+                // Jika gagal, tetap biarkan login berhasil tetapi tanpa doctor_id di session
+                error_log("Get doctor_id on login error: " . $e->getMessage());
+                $_SESSION['doctor_id'] = null;
+            }
+        }
+        
         // Redirect berdasarkan role
         if ($user['role'] === 'admin') {
             set_flash('success', 'Selamat datang, ' . $user['nama'] . '!');

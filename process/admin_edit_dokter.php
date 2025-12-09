@@ -39,6 +39,10 @@ if (empty($id) || empty($nama) || empty($spesialisasi) || empty($no_telepon)) {
 
 try {
     $db = get_db_connection();
+    // Ambil data dokter lama (sebelum update) untuk sinkronisasi nama user jika perlu
+    $stmtOld = $db->prepare("SELECT * FROM doctors WHERE id = ? LIMIT 1");
+    $stmtOld->execute([$id]);
+    $old = $stmtOld->fetch();
     
     // Update data dokter
     $stmt = $db->prepare("
@@ -64,6 +68,24 @@ try {
         set_flash('success', 'Data dokter <strong>' . htmlspecialchars($nama, ENT_QUOTES, 'UTF-8') . '</strong> berhasil diupdate!');
     } else {
         set_flash('warning', 'Tidak ada perubahan data atau dokter tidak ditemukan.');
+    }
+    
+    // Jika dokter lama ditemukan, coba sinkron nama di tabel users jika ada relasi
+    if (!empty($old)) {
+        try {
+            // Jika kolom user_id ada di table doctors (future-proof), gunakan itu
+            if (isset($old['user_id']) && !empty($old['user_id'])) {
+                $stmtUser = $db->prepare("UPDATE users SET nama = ? WHERE id = ? AND role = 'dokter'");
+                $stmtUser->execute([$nama, $old['user_id']]);
+            } else {
+                // Fallback: update users yang memiliki nama sama dengan nama lama
+                $stmtUser = $db->prepare("UPDATE users SET nama = ? WHERE nama = ? AND role = 'dokter'");
+                $stmtUser->execute([$nama, $old['nama']]);
+            }
+        } catch (PDOException $e) {
+            error_log("Sync users.nama after doctor edit failed: " . $e->getMessage());
+            // non-fatal, lanjutkan
+        }
     }
     
 } catch (PDOException $e) {

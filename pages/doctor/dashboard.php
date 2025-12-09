@@ -10,11 +10,16 @@ check_role(['dokter']);
 try {
     $db = get_db_connection();
     
-    // Ambil ID dokter berdasarkan nama user (dari session)
-    $stmt = $db->prepare("SELECT id FROM doctors WHERE nama = ? LIMIT 1");
-    $stmt->execute([$_SESSION['nama']]);
-    $doctor_data = $stmt->fetch();
-    $doctor_id = $doctor_data['id'] ?? 0;
+    // Prioritas: gunakan doctor_id yang disimpan di session (set saat login)
+    $doctor_id = $_SESSION['doctor_id'] ?? null;
+
+    // Jika tidak ada di session, fallback: cari berdasarkan nama (backward compatibility)
+    if (empty($doctor_id)) {
+        $stmt = $db->prepare("SELECT id FROM doctors WHERE nama = ? LIMIT 1");
+        $stmt->execute([$_SESSION['nama']]);
+        $doctor_data = $stmt->fetch();
+        $doctor_id = $doctor_data['id'] ?? 0;
+    }
     
     // Hitung pasien hari ini untuk dokter ini
     $stmt = $db->prepare("
