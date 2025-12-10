@@ -50,6 +50,7 @@
 | File | Description |
 |------|-------------|
 | **[DATABASE_SCHEMA.md](DATABASE_SCHEMA.md)** | Struktur tabel, kolom, relasi, foreign keys, indexes |
+| **[SQL_ANALYSIS.md](SQL_ANALYSIS.md)** | Analisis lengkap DDL & DML operations di project |
 | **[CODEBASE_GUIDE.md](CODEBASE_GUIDE.md)** | Arsitektur code, config files, pages, process files |
 
 ### 📖 User & Testing
@@ -68,6 +69,7 @@
 |-------|------|
 | 🚀 **Mulai Setup** | [DEV_SETUP.md](DEV_SETUP.md) |
 | 🗄️ **Database** | [DATABASE_SCHEMA.md](DATABASE_SCHEMA.md) |
+| 🔍 **SQL Operations** | [SQL_ANALYSIS.md](SQL_ANALYSIS.md) |
 | 💻 **Code Structure** | [CODEBASE_GUIDE.md](CODEBASE_GUIDE.md) |
 | 👥 **Cara Pakai** | [USER_GUIDE.md](USER_GUIDE.md) |
 | 🧪 **Testing** | [TESTING.md](TESTING.md) |
@@ -79,9 +81,10 @@
 
 1. **Mulai dari DEV_SETUP.md** - Install & jalankan dulu
 2. **Pahami database di DATABASE_SCHEMA.md** - Lihat tabel & relasi
-3. **Baca CODEBASE_GUIDE.md** - Mengerti struktur folder & file
-4. **Coba fitur di USER_GUIDE.md** - Praktek pakai aplikasi
-5. **Gunakan QUICK_REFERENCE.md** - Shortcut command
+3. **Pelajari SQL di SQL_ANALYSIS.md** - DDL & DML yang digunakan
+4. **Baca CODEBASE_GUIDE.md** - Mengerti struktur folder & file
+5. **Coba fitur di USER_GUIDE.md** - Praktek pakai aplikasi
+6. **Gunakan QUICK_REFERENCE.md** - Shortcut command
 
 ---
 

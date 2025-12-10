@@ -140,6 +140,7 @@ Dokumentasi lengkap tersedia di folder `documentation/`:
 
 ### 🏗️ Technical Docs
 - **[DATABASE_SCHEMA.md](documentation/DATABASE_SCHEMA.md)** - Struktur database & relasi
+- **[SQL_ANALYSIS.md](documentation/SQL_ANALYSIS.md)** - Analisis lengkap DDL & DML operations
 - **[CODEBASE_GUIDE.md](documentation/CODEBASE_GUIDE.md)** - Arsitektur code & fungsi file
 
 ### 📖 Usage & Testing
